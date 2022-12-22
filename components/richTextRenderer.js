@@ -1,17 +1,7 @@
-export default function RichTextRenderer(props, key)
+import { Renderer } from "@cristata/prosemirror-to-html-js";
+
+export default function RichTextRenderer({ document })
 {
-    debugger;
-    switch(props.type)
-    {
-        case "doc":
-            return (<section key={key}>{props.content.map(RichTextRenderer)}</section>);
-        case "paragraph":
-            return (<p key={key}>{props.content.map(RichTextRenderer)}</p>);
-        case "text":
-            return props.text;
-        default:
-            debugger;
-            console.log("Unknown content type", props.type);
-            return (<div></div>);
-    }
+    const html = new Renderer().render(document);
+    return (<div dangerouslySetInnerHTML={{ __html: html }} />);
 }

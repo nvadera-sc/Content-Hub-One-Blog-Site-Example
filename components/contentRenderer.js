@@ -5,7 +5,7 @@ export default function ContentRenderer({ contentData })
     switch(contentData.type)
     {
         case "RichText":
-            return RichTextRenderer(contentData.value);
+            return (<RichTextRenderer document={contentData.value} />);
         default:
             return;
     }
